@@ -9,10 +9,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
+      
+            > img{
+                max-height: 45px;
+            }
+    
+            > div{
+                display: flex;
+                gap: 16px;
 
-        >img{
-            max-height: 45px;
+                button{
+                    height: 40px;
+                    
+                }
+            }
         }
     }
 
@@ -94,6 +104,10 @@
                     cursor: pointer;
                 }
             }
+        }
+        
+        .question-list{
+            margin-top: 32px;
         }
     }
     

@@ -10,7 +10,7 @@ import { Button } from '../components/Button';
 import '../styles/auth.scss';
 import { useAuth } from '../hooks/useAuth';
 import { database } from '../services/firebase';
-import firebase from 'firebase';
+
 
 
 export function NewRoom() { 
