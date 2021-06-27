@@ -1,8 +1,9 @@
 #page-room{
+    
     header{
         padding: 24px;
         border-bottom: 1px solid #e2e2e2;
-
+        
         .content{
             max-width: 1120px;
             margin: 0 auto;
@@ -23,6 +24,21 @@
                     
                 }
             }
+
+            &.dark {
+                .room-code {
+                    background-color: #171923;
+
+                    span {
+                        color: #fff;
+                    }
+                }
+
+                .button {
+                    background-color: #171923;
+                }
+            }
+            
         }
     }
 
@@ -34,12 +50,20 @@
             margin: 32px 0 24px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
+
 
             h1{
                 font-family: 'Poppin', sans-serif;
                 font-size: 24px;
-                color: #29292e;
+                color: #29292e;        
+                
+                &.dark {
+                    color: #fff
+                }
             }
+
+
 
             span{
                 margin-left: 16px;
@@ -62,6 +86,11 @@
                 box-shadow: 0 2px 12px rgba(0,0,0,0.04);
                 resize: vertical;
                 min-height:130px;
+
+                &.dark{
+                    background: #171923;
+                    color: #fff;
+                }
             }
 
             .form-footer{
@@ -86,6 +115,10 @@
                     color: #29292e;
                     font-weight: 500;
                     font-size: 14px;
+
+                    &.dark {
+                        color : #fff;
+                    }
                 }
             }
 
@@ -108,7 +141,29 @@
         
         .question-list{
             margin-top: 32px;
+
+            &.dark {
+                .question {
+                    background: #171923;
+
+                    &.answered {
+                        background: #1A202C;
+                    }
+
+                    p {
+                        color: #fff;
+                    }
+
+                    .user-info span{
+                        color: #fff;
+                    }
+                }
+            }
+
         }
+        
     }
-    
-}
+  
+}  
+
+

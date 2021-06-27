@@ -3,14 +3,16 @@ import { useHistory} from 'react-router-dom';
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
-
+import  Switch  from 'react-switch';
 import { Button } from '../components/Button';
+import logo_white from '../assets/images/logo_white.png';
 
 
 import '../styles/auth.scss';
 import { useAuth } from '../hooks/useAuth';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { database } from '../services/firebase';
+import { useTheme } from '../hooks/useTheme';
 
 
 export function Home() {
@@ -18,6 +20,7 @@ export function Home() {
     const { user, signInWithGoogle } = useAuth();
     const [roomCode, setRoomCode] = useState(''); 
      
+    const { theme, toggleTheme} = useTheme()
 
     async function handleCreateRoom(){
         if(!user) {
@@ -51,8 +54,17 @@ export function Home() {
         history.push(`/rooms/${roomCode}`);
     }
 
+    useEffect(() => {
+        if (theme === "light") {
+            document.body.style.backgroundColor = "#fefefe";
+        } else {
+            document.body.style.backgroundColor = "#223";
+        }
+    }, [theme]);
+
+
     return (
-        <div id="page-auth">
+        <div id="page-auth" className={theme}>
             <aside>
                 <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao-vivo</strong>
@@ -61,7 +73,16 @@ export function Home() {
             <main>
            
                 <div className="main-content">
-                    <img src={logoImg} alt="Letmeask" />
+                    <Switch
+                        className="switch"
+                        onChange={toggleTheme}
+                        checked={theme === 'light'}
+                        checkedIcon={false}
+                        uncheckedIcon={false}   
+                        onColor={'#835afd'}                   
+                    />
+
+                    <img src={theme === 'light' ? logoImg : logo_white} alt="Letmeask" />
                     <button onClick={handleCreateRoom} className="create-room">
                         <img src={googleIconImg} alt="Logo do Google" />
                         Crie sua sala com o Google

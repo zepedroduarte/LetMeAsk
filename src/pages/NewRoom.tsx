@@ -1,6 +1,8 @@
 import { Link, useHistory } from 'react-router-dom';
-import { FormEvent } from 'react';
+import { FormEvent, useEffect } from 'react';
 import { useState } from 'react';
+import { useTheme } from '../hooks/useTheme';
+import logo_white from '../assets/images/logo_white.png';
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
@@ -17,6 +19,7 @@ export function NewRoom() {
     const { user } = useAuth();
     const history = useHistory();
     const [newRoom, setNewRoom] = useState('');
+    const { theme } = useTheme();
 
     async function handleCreateRoom(event: FormEvent) {
         event.preventDefault();
@@ -32,11 +35,20 @@ export function NewRoom() {
             authorId: user?.id,
         })
 
-        history.push(`/rooms/${firebaseRoom.key}`);
+        history.push(`/admin/rooms/${firebaseRoom.key}`);
     }
 
+    useEffect(() => {
+        if (theme === "light") {
+            document.body.style.backgroundColor = "#fefefe";
+        } else {
+            document.body.style.backgroundColor = "#223";
+        }
+    }, [theme]);
+
+
     return (
-        <div id="page-auth">
+        <div id="page-auth" className={theme}>
             <aside>
                 <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao-vivo</strong>
@@ -44,7 +56,7 @@ export function NewRoom() {
             </aside>
             <main>           
                 <div className="main-content">
-                    <img src={logoImg} alt="Letmeask" />
+                    <img src={theme === 'light' ? logoImg : logo_white} alt="Letmeask" />
                     <h2>Criar uma nova sala</h2>
                    
                     <form onSubmit={handleCreateRoom}>
@@ -58,8 +70,8 @@ export function NewRoom() {
                            Criar sala
                         </Button>
                     </form>
-                    <p>
-                        Quer entrar em uma sala existente? <Link to="/">clique aqui</Link>
+                    <p className={theme}>
+                        Quer entrar em uma sala existente? <Link to="/">Clique aqui</Link>
                     </p>
                 </div>
             </main>

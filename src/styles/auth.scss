@@ -2,6 +2,10 @@
     display:flex;
     align-items:stretch;
     height: 100vh;
+    
+    &.dark {
+        color: #fff;
+    }
 
     aside{
         flex: 7;
@@ -53,8 +57,14 @@
         align-items: stretch;
         text-align: center;
 
+        .switch {
+            margin: 0 auto;
+            padding-bottom: 32px;
+        }
+
         >img{
             align-self: center;
+            max-width: 160px;
         }
         
         h2 {
@@ -88,9 +98,14 @@
             color: #737380;
             margin-top: 16px;
             
+            &.dark{
+                color: #fff;
+            }
+
             a {
                 color: #e559f9;
             }
+
         }
     }
 
