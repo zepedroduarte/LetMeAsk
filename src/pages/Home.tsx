@@ -90,6 +90,7 @@ export function Home() {
                     <div className="separator">ou entre em uma sala</div>
                     <form onSubmit={handleJoinRoom}>
                         <input 
+                            className={theme}
                             type="text" 
                             placeholder="Digite o código da sala"
                             onChange={event => setRoomCode(event.target.value)}

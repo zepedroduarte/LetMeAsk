@@ -61,6 +61,7 @@ export function NewRoom() {
                    
                     <form onSubmit={handleCreateRoom}>
                         <input 
+                            className={theme}
                             type="text" 
                             placeholder="Nome da sala" 
                             onChange={event => setNewRoom(event.target.value)}
